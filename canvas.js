@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("mousemove", function (e) {
         coords.x = e.pageX;
         coords.y = e.pageY;
+        document.body.classList.add("cursor-active");
 
         animateCircles();
     });

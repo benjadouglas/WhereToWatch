@@ -1,18 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta content="Douglas Benjamin, De la pena Jose, Arrieta Ian">
-    <meta content="Pagina para ver informacion sobre peliculas" name="WhereToWatch">
-    <meta content="hmtl, head, meta, link, title, body, script" name="keywords">
-    <link rel="shortcut icon" href="Imagenes/favicon-16x16.svg">
-    <link rel="preload" href="css/styleMovies.css" as="style">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Douglas Benjamin, De la pena Jose, Arrieta Ian">
+    <meta name="description" content="Pagina para ver informacion sobre peliculas y donde verlas">
+    <meta name="theme-color" content="#0b0b0f">
+    <link rel="icon" href="Imagenes/favicon-16x16.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+    <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/styleMovies.css">
     <title>WhereToWatch</title>
 </head>
-
-
 <body>
 <div class="circle"></div>
 <div class="circle"></div>
@@ -24,22 +25,37 @@
 <div class="circle"></div>
 <div class="circle"></div>
 <div class="circle"></div>
-<div class="container">
-    <div class="element">(sorprendete)</div>
-    <img id="arrow" src="Imagenes/arrow.png" alt="arrow">
-</div>
 
-<header class="title-container">
-    <h1 id="title">WhereT<button id="title-button" onclick="orderByRating()">o</button>Watch </h1>
+<header class="site-header">
+    <div class="header-inner">
+        <a href="index.html" class="logo">WhereT<span>o</span>Watch</a>
+        <form class="search" id="search-form" role="search">
+            <label for="search-bar" class="sr-only">Buscar una película</label>
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="11" cy="11" r="7"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input id="search-bar" type="search" placeholder="Buscá una película…" autocomplete="off">
+            <button type="button" class="search-clear" id="search-clear" aria-label="Limpiar búsqueda" hidden>×</button>
+            <kbd class="search-kbd">/</kbd>
+        </form>
+    </div>
 </header>
-<div class='search-box' id='search-box'>
-    <label for='search-bar'></label><input id='search-bar' type="text" placeholder="Busque una pelicula"
-                                           onkeydown='lookMovie()'>
-    <button id='search-button' onclick='lookMovie()'>🔎</button>
-</div>
-<div class="movies-container" id="movies-container"><!--aca adentro va el html de movie.js --> </div>
+
+<main>
+    <div class="toolbar">
+        <h1 class="section-title" id="section-title">Populares</h1>
+        <div class="tabs" role="tablist" id="tabs">
+            <button class="tab" role="tab" data-category="popular" aria-selected="true">Populares</button>
+            <button class="tab" role="tab" data-category="top_rated" aria-selected="false">Mejor calificadas</button>
+            <button class="tab" role="tab" data-category="now_playing" aria-selected="false">En cines</button>
+        </div>
+    </div>
+    <section class="movies-grid" id="movies-container" aria-live="polite"></section>
+</main>
+
 <script src="movies.js"></script>
 <script src="canvas.js"></script>
 </body>
 </html>
-

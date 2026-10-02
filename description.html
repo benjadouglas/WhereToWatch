@@ -1,12 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title class="single-movie-title"></title>
-    <link rel="stylesheet" href='css/styleSingleMovies.css'>
-    <link rel="shortcut icon" href="Imagenes/favicon-16x16.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0b0b0f">
+    <title>WhereToWatch</title>
+    <link rel="icon" href="Imagenes/favicon-16x16.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/styleSingleMovies.css">
 </head>
-<body onload=loadMovie()>
+<body>
 <div class="circle"></div>
 <div class="circle"></div>
 <div class="circle"></div>
@@ -17,11 +23,29 @@
 <div class="circle"></div>
 <div class="circle"></div>
 <div class="circle"></div>
-<div class="container">
-    <div class="single-movie-page" id="single-movie-page"></div>
-</div>
+
+<header class="site-header">
+    <div class="header-inner">
+        <a href="index.html" class="logo">WhereT<span>o</span>Watch</a>
+        <a href="index.html" class="btn back-link" id="back-link">← Volver</a>
+    </div>
+</header>
+
+<div class="backdrop" id="backdrop" aria-hidden="true"></div>
+<main class="single-movie-page" id="single-movie-page" aria-busy="true">
+    <div class="detail skeleton">
+        <div class="detail-poster"></div>
+        <div class="detail-body">
+            <div class="skeleton-line" style="width:60%;height:36px"></div>
+            <div class="skeleton-line" style="width:30%"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line" style="width:70%"></div>
+        </div>
+    </div>
+</main>
+
 <script src="single-movie.js"></script>
 <script src="canvas.js"></script>
 </body>
 </html>
-
