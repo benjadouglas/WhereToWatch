@@ -129,7 +129,7 @@ main {
 }
 
 .tab[aria-selected="true"] {
-    background: var(--accent-gradient);
+    background: var(--accent);
     color: #fff;
 }
 

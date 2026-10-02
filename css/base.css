@@ -127,13 +127,13 @@ img {
 }
 
 .btn-primary {
-    background: var(--accent-gradient);
+    background: var(--accent);
     border-color: transparent;
     color: #fff;
 }
 
 .btn-primary:hover {
-    background: var(--accent-gradient);
+    background: var(--accent);
     border-color: transparent;
     filter: brightness(1.1);
     box-shadow: 0 8px 24px -8px var(--accent);
