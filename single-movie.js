@@ -2,6 +2,7 @@ const API_KEY = 'dcfbb1ad76889a2f3af575f398f1ab52';
 const API_URL = 'https://api.themoviedb.org/3';
 const IMG_URL = 'https://image.tmdb.org/t/p';
 const REGION = 'AR';
+const OMDB_KEY = '85b3e24f';
 
 // El id viene en la URL (?id=123); si no, usamos el último guardado en localStorage
 const movieId = new URLSearchParams(window.location.search).get('id') || localStorage.getItem('movieId');
@@ -96,7 +97,7 @@ const loadMovie = async () => {
 
         const year = data.release_date ? data.release_date.slice(0, 4) : '';
         const chips = [
-            data.vote_average ? `<span class="chip score">${data.vote_average.toFixed(1)}</span>` : '',
+            '<span class="chip imdb" id="imdb-chip" hidden></span>',
             year ? `<span class="chip">${year}</span>` : '',
             data.runtime ? `<span class="chip">${formatRuntime(data.runtime)}</span>` : '',
             ...(data.genres || []).map((g) => `<span class="chip">${escapeHtml(g.name)}</span>`),
@@ -124,11 +125,33 @@ const loadMovie = async () => {
                 </div>
             </article>
         `;
+
+        loadImdbRating(data.imdb_id);
     } catch (error) {
         console.error(error);
         showError('No pudimos cargar la película');
     } finally {
         page.removeAttribute('aria-busy');
+    }
+};
+
+/**
+ * Trae el rating de IMDb desde OMDb (TMDB nos da el imdb_id) y lo muestra
+ * @param {string} imdbId - id de IMDb, ej: tt0133093
+ */
+const loadImdbRating = async (imdbId) => {
+    if (!imdbId) return;
+    try {
+        const response = await fetch(`https://www.omdbapi.com/?i=${encodeURIComponent(imdbId)}&apikey=${OMDB_KEY}`);
+        const imdbData = await response.json();
+        const rating = imdbData.imdbRating;
+        if (!rating || rating === 'N/A') return;
+
+        const chip = document.getElementById('imdb-chip');
+        chip.textContent = `IMDb | ${rating}`;
+        chip.hidden = false;
+    } catch (error) {
+        console.error(error);
     }
 };
 

@@ -84,14 +84,11 @@
     color: var(--muted);
 }
 
-.chip.score {
-    color: var(--text);
+.chip.imdb {
+    background: #f5c518;
+    border-color: #f5c518;
+    color: #000;
     font-weight: 700;
-}
-
-.chip.score::before {
-    content: '★ ';
-    color: #f5c518;
 }
 
 .overview {

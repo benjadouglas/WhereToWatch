@@ -200,24 +200,6 @@ main {
     opacity: 1;
 }
 
-.rating {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    z-index: 1;
-    padding: 4px 8px;
-    border-radius: 999px;
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(6px);
-    font-size: 12px;
-    font-weight: 700;
-}
-
-.rating::before {
-    content: '★ ';
-    color: #f5c518;
-}
-
 .movie-info {
     padding: 12px 2px 0;
 }

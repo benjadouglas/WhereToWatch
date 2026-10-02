@@ -64,7 +64,6 @@ const renderMovies = (movies) => {
     grid.removeAttribute('aria-busy');
     grid.innerHTML = movies.map((movie, i) => {
         const year = movie.release_date ? movie.release_date.slice(0, 4) : '';
-        const rating = movie.vote_average ? movie.vote_average.toFixed(1) : '';
         const poster = movie.poster_path
             ? `<img src="${IMG_URL}${movie.poster_path}" alt="Póster de ${escapeHtml(movie.title)}" loading="lazy">`
             : `<div class="poster-fallback">${escapeHtml(movie.title)}</div>`;
@@ -72,7 +71,6 @@ const renderMovies = (movies) => {
         return `
             <a class="movie-card" href="description.html?id=${movie.id}" style="animation-delay:${Math.min(i, 20) * 30}ms">
                 <div class="poster">
-                    ${rating ? `<span class="rating">${rating}</span>` : ''}
                     ${poster}
                 </div>
                 <div class="movie-info">
